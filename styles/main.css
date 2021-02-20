@@ -54,6 +54,7 @@ body {
     padding: 10px 50px;
     border: 2px solid black;
     font-size: 100%;
+    font-weight: bold;
     border-radius: 10px;
   }
   
@@ -75,5 +76,10 @@ body {
     padding: 5px 25px;
     border: 2px solid black;
     border-radius: 5px;
+  }
+  
+  .weather-info__error{
+    display: none;
+    margin: 0;
   }
   
