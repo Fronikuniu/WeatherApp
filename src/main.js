@@ -18,18 +18,26 @@ class WeatherApp {
     }
 
     setupListeners = () => {
-        this.viewElems.searchInput.addEventListener('keydown', this.handleSubmit);
-        this.viewElems.searchButton.addEventListener('click', this.handleSubmit);
+        this.viewElems.searchInput.addEventListener('keydown', this.buttonSubmit);
+        this.viewElems.searchButton.addEventListener('click', this.buttonSubmit);
         this.viewElems.returnToSearchBtn.addEventListener('click', this.returnToSearch);
     }
 
-    handleSubmit = () => {
+    buttonSubmit = () => {
         if (event.type === 'click' || event.key === 'Enter') {
             this.fadeInOut();
             let query = this.viewElems.searchInput.value;
             getWeatherByCity(query)
             .then(data => {
                 this.displayWeatherData(data);
+                this.viewElems.searchInput.style.borderColor = 'black';
+                this.viewElems.weatherInfoError.style.display = 'none';
+            })
+            .catch(() => {
+                this.fadeInOut();
+                this.viewElems.searchInput.style.borderColor = 'red';
+                this.viewElems.weatherInfoError.style.display = 'block';
+                this.viewElems.weatherInfoError.style.color = 'red';
             });
         }
     }
@@ -57,7 +65,7 @@ class WeatherApp {
         setTimeout(() => {
             this.switchView();
             this.fadeInOut();
-        }, 500);   
+        }, 500); 
     }
 
     displayWeatherData = data => {
