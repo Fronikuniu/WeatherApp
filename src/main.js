@@ -103,5 +103,4 @@ const initializeApp = () => {
     setupListeners();
 }
 
-document.addEventListener('DOMContentLoaded', initializeApp)
-
+document.addEventListener('DOMContentLoaded', initializeApp);
